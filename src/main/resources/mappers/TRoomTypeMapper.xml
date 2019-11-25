@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fourseasons.hotel.mapper.TRoomTypeMapper">
+
+    <resultMap id="TRoomType_ResultMap" type="com.fourseasons.hotel.domain.vo.TRoomTypeVo">
+        <id property="roomTypeId"  column="room_Type_Id" />
+        <result property="roomTypeName" column="room_type_name"/>
+        <result property="roomTypeDescribe" column="room_Type_Describe"/>
+        <result property="roomTypePrice" column="room_Type_Price"/>
+        <result property="roomTypeStatus" column="room_Type_Status"/>
+        <collection property="tRoomList" ofType="com.fourseasons.hotel.domain.entity.TRoom">
+            <id property="roomId" column="room_Id"/>
+            <result property="roomNum" column="room_Num" />
+            <result property="roomTypeId" column="room_Type_Id" />
+            <result property="roomPrice" column="room_Price" />
+            <result property="adminId" column="admin_Id" />
+        </collection>
+    </resultMap>
+
+    <resultMap id="TRoomType_ResultMap1" type="com.fourseasons.hotel.domain.vo.TRoomTypeVo">
+        <id property="roomTypeId"  column="room_Type_Id" />
+        <result property="roomTypeName" column="room_type_name"/>
+        <result property="roomTypeDescribe" column="room_Type_Describe"/>
+        <result property="roomTypePrice" column="room_Type_Price"/>
+        <result property="roomTypeStatus" column="room_Type_Status"/>
+    </resultMap>
+
+    <select id="findByRoomTypeId" resultMap="TRoomType_ResultMap">
+        SELECT TRT.room_type_id,TRT.room_type_name,TRT.room_type_describe,TR.room_id,TR.room_num,TR.room_price
+        FROM t_room_type TRT LEFT JOIN t_room TR ON TRT.room_Type_Id = TR.room_Type_Id
+    </select>
+    <select id="findTRoomType" resultMap="TRoomType_ResultMap1">
+        SELECT TRT.room_type_id,TRT.room_type_name,TRT.room_type_describe,TRT.room_type_price
+        FROM t_room_type TRT
+    </select>
+
+
+</mapper>

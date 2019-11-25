@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fourseasons.hotel.mapper.TOrderMapper">
+
+    <resultMap id="TOrder_ResultMap" type="com.fourseasons.hotel.domain.entity.TOrder">
+        <id property="orderId"  column="order_Id" />
+        <result property="orderCode" column="order_Code"/>
+        <result property="orderCreateTime" column="order_CreateTime"/>
+        <result property="orderRoomstart" column="order_Roomstart"/>
+        <result property="orderRoomend" column="order_Roomend"/>
+    </resultMap>
+    <select id="findOrder" resultMap="TOrder_ResultMap">
+        SELECT TO1.order_id,TO1.order_code,TO1.order_roomstart,TO1.order_roomend
+        FROM t_order TO1
+    </select>
+</mapper>
