@@ -12,6 +12,6 @@ import java.util.List;
 public interface RoomSystemService {
     List<TRoomTypeVo> getContent();
     List<TRoomVo> getAllRooms();
-    List<TRoomVo> getRoomDeatils(Integer roomId);
-    List<TRoom> search(String keyword);
+    List<TRoomVo> getRoomDetails(Integer roomId);
+    List<TRoomVo> search(String keyword);
 }

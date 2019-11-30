@@ -14,8 +14,8 @@ import java.util.List;
 public interface TRoomMapper {
     List<TRoomVo> findAllRooms();
 
-    List<TRoomVo> findByroomId(@Param("roomId") Integer roomId);
+    List<TRoomVo> findByRoomId(@Param("roomId") Integer roomId);
 
-    List<TRoom> findByKeyword(@Param("keyword") String keyword);
+    List<TRoomVo> findByKeyword(@Param("keyword") String keyword);
 
 }

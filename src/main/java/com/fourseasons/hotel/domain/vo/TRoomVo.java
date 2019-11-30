@@ -13,5 +13,5 @@ import java.util.List;
 
 @Data
 public class TRoomVo extends TRoom {
-    List<TRoomType> tRoomTypeList;
+    TRoomType tRoomType;
 }

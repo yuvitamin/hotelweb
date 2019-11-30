@@ -1,0 +1,37 @@
+#指定docker-compose的版本
+version: '3'
+#应用容器
+services:
+  #容器1（可以有多个）
+  mysql-demo:
+    #镜像
+    image: mysql:5.7.22
+    #容器的名称
+    container_name: mysql-demo
+    #重启
+    restart: always
+    #覆盖容器启动后默认执行的命令
+    command:
+      # 设置数据库的编码
+      --character-set-server=utf8mb4
+      # 设置数据库默认的排序方式
+      --collation-server=utf8mb4_general_ci
+      # 解决低版本不允许时间字段 not null
+      --explicit_defaults_for_timestamp=true
+      # Linux  表名区分大小写   1 表示不区分大小写
+      --lower_case_table_names=1
+    environment:
+      # 初始化数据库密码
+      MYSQL_ROOT_PASSWORD: root
+      # 初始化数据库的名字
+      MYSQL_DATABASE: db_docker
+      # 时区
+      TZ: Asia/Shanghai
+    #mysql的数据挂载到容器中
+    volumes:
+      ##左边宿主机（可以自定义路径），右边容器（不可以改变路径）
+      - ./data:/var/lib/mysql
+      - ./log::/var/log/mysql
+    #端口
+    ports:
+      - 3306:3306

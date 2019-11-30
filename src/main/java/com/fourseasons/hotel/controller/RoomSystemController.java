@@ -56,10 +56,10 @@ public class RoomSystemController {
      */
 
     @RequestMapping(value ="/details")
-    public Result getRoomDeatils(Integer roomId){
+    public Result getRoomDetails(Integer roomId){
         try {
-            List<TRoomVo> roomDeatils= roomsystemService.getRoomDeatils(roomId);
-            return Result.success(roomDeatils);
+            List<TRoomVo> roomDetails= roomsystemService.getRoomDetails(roomId);
+            return Result.success(roomDetails);
         } catch (Exception e) {
             return Result.error();
         }
@@ -75,7 +75,7 @@ public class RoomSystemController {
     @RequestMapping(value ="/search")
     public Result<List<TRoom>> search(String keyword){
         try {
-            List<TRoom> search = roomsystemService.search(keyword);
+            List<TRoomVo> search = roomsystemService.search(keyword);
             return Result.success(search);
         } catch (Exception e){
             return Result.error();

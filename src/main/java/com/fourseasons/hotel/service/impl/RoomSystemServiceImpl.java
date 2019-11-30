@@ -36,13 +36,13 @@ public class RoomSystemServiceImpl implements RoomSystemService {
 
 
     @Override
-    public List<TRoomVo> getRoomDeatils(Integer roomId) {
-        List<TRoomVo> getRoomDeatils = tRoomMapper.findByroomId(roomId);
-        return getRoomDeatils;
+    public List<TRoomVo> getRoomDetails(Integer roomId) {
+        List<TRoomVo> getRoomDetails = tRoomMapper.findByRoomId(roomId);
+        return getRoomDetails;
     }
 
     @Override
-    public List<TRoom> search(String keyword) {
+    public List<TRoomVo> search(String keyword) {
         return tRoomMapper.findByKeyword(keyword);
     }
 
